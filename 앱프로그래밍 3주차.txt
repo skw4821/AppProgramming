@@ -1,0 +1,224 @@
+/* 
+ * 구구단 코딩하기
+void main() {
+  for (int i = 2; i < 10; i++) {
+    for (int j = 1; j < 10; j++) {
+      print("${i} x ${j} = ${i * j}");
+    }
+    print('');
+  }
+}
+
+
+
+class Person {
+  //클래스 필드 이름앞에 '_'를 붙이는 것은 다수의 언어(자바, 씨샾, 씨플플에서 사용하는 스타일이다.
+  String _name;
+  int _age;
+  String _desc;
+  
+  //이런 방식의 생성자는 Dart 언어의 고유한 형태이다
+  Person(this._name, this._age, this._desc);
+  //필드값을 수정하는 것은 통제된 메서드에서만 하는것이 좋다.
+  void addOneyear() {
+    _age++;
+  }
+  //게터, 세터를 이용하여 값을 전달하거나 수정하는것을 통제할 수 있다.
+  String get name => _name;
+  int get age => _age;
+  String get desc => '$_desc!!!';
+  set desc(String v) => _desc = v;
+}
+
+void main() {
+  var na = Person('송광우', 24, "송광우는 송팡우이다");
+  //na.name = "송광우";
+  //na.age = 24;
+  print([na.name, na.age, na.desc]);
+
+  na.addOneyear();
+  na.desc = "아니다. 송굉우이다";
+  print([na.name, na.age, na.desc]);
+}
+
+
+class Person {
+  String? name;
+  int? age;
+  
+  Person({this.name, this.age});
+  
+}
+
+void main() {
+  var p = Person(); // name: null, age : null
+  var p2 = Person(name: "송굉우"); //name: 송굉우, age : null
+  var p3 = Person(age : 24); //name: null, age : 24
+  var p4 = Person(name: "송굉우", age : 24); // name: 송굉우, age : 24
+
+
+}
+
+
+class Rectangle { //사각형을 왼쪽, 상단,너비, 높이로 표현
+  num left, top, width, height;
+  
+  Rectangle(this.left, this.top, this.width, this.height);
+  
+  // 오른쪽, 하단은 필드를 생성하지 않고 get/set으로 계산하여 표현
+  num get right => left + width;
+  set right(num value) => left = value - width;
+  num get bottom => top + height;
+  set bottom(num value) => top = value - height;
+}
+
+
+void main() {
+  
+  var r1 = Rectangle(5,10,20,25);
+  print([r1.left , r1.top, r1. width, r1.height]);
+  print([r1.width, r1.height]);
+
+// left, top, width, height <-> left, top, right, bottom 
+}
+
+
+
+class Hero {
+  String name = "영웅";
+
+  void run() {
+    print('뛴다.');
+  }
+}
+
+class SuperHero extends Hero {
+  @override
+  void run() {
+    super.run();
+    this.fly();
+  }
+
+  void fly() {
+    print('난다!');
+  }
+}
+
+void main() {
+  var hero = SuperHero();
+  hero.run;
+  //hero.fly();
+  print(hero.name);
+}
+
+
+abstract class Monster {
+  void attack();
+}
+
+class Goblin implements Monster {
+  @override
+  void attack() {
+    print("고블린 어택!");
+  }
+}
+
+class Bat implements Monster {
+  @override
+  void attack() {
+    print("할퀴기!");
+  }
+}
+
+void main() {
+var g1 = Goblin();
+var b1 = Bat();
+  g1.attack();
+  b1.attack();
+  
+  //monsters의 타입은?
+  List monsters = [g1, b1];
+  monsters.forEach((m) => m.attack());
+}
+
+
+
+enum Status {login, logout}
+
+void main() {
+  var authStatus = Status.logout;
+  print(authStatus);
+  
+  switch(authStatus) {
+    case Status.login:
+      print("로그인");
+      break;
+    case Status.logout:
+      print("로그아웃");
+      break;
+      
+      
+      
+  }
+}
+
+
+
+void main() {
+  
+  var l1 = [1,2,3,4,5,6];
+  var l2 = ['가', '나', '다', '라', '마', '바'];
+  print(l1);
+  print(l2);
+  
+  l1.add(7);
+  print(l1);
+  l1.remove(2);
+  print(l1);
+  
+  //나라의 수도를 표현할 때
+  var m1 = {'한국': '서울', '일본': '도쿄'};
+  print(m1);
+  print(m1['한국']);
+  m1['중국'] = '북경';
+  
+  var s1 = {1,2,3,3,3,3,4,5};
+  print(s1);
+  s1.add(6);
+  print(s1);
+  s1.add(6);
+  print(s1);
+  }
+
+
+
+
+
+
+void main() {
+  var lottoNums = [5,6,11,13,17,21];
+ //for(var num in lottoNums) {
+  lottoNums.forEach((num) { 
+  print(num);
+ });
+}
+*/
+
+
+void func_a() {
+  print('왼쪽!');
+}
+
+void func_b() {
+  print('오른쪽!');
+}
+
+void main() {
+  var fun = func_a();
+  fun();
+  fun = func_b;
+  fun();
+  
+  var list = [1,2,3,4,5];
+  list.forEach((num) => print(num));
+}
